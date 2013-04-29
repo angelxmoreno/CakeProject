@@ -1,0 +1,3 @@
+[submodule "Plugin/Users"]
+	path = Plugin/Users
+	url = https://github.com/angelxmoreno/users.git
