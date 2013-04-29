@@ -1,3 +1,18 @@
 [submodule "Plugin/Users"]
 	path = Plugin/Users
 	url = https://github.com/angelxmoreno/users.git
+[submodule "Plugin/TwitterBootstrap"]
+	path = Plugin/TwitterBootstrap
+	url = https://github.com/angelxmoreno/TwitterBootstrap.git
+[submodule "Plugin/Opauth"]
+	path = Plugin/Opauth
+	url = https://github.com/angelxmoreno/cakephp-opauth.git
+[submodule "Plugin/DebugKit"]
+	path = Plugin/DebugKit
+	url = git://github.com/cakephp/debug_kit.git
+[submodule "Plugin/Search"]
+	path = Plugin/Search
+	url = git://github.com/CakeDC/search.git
+[submodule "Plugin/Migrations"]
+	path = Plugin/Migrations
+	url = git://github.com/CakeDC/migrations.git
