@@ -1,4 +1,4 @@
 CakeProject
 ===========
 
-Forget `cake bake` `git clone` FTW
+Forget `cake bake`! `git clone` FTW
