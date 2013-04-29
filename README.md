@@ -1,4 +1,19 @@
 CakeProject
 ===========
 
-Forget `cake bake`! `git clone` FTW
+Forget `cake bake`! `git clone` FTW!
+
+Status
+===========
+Still have a few TODOs to do before master becomes stable
+
+Goal
+===========
+I'd like to be able to clone an entire project, run a script to initialize it, and then start coding. A lot of this can be done as part of `cake bake`, however,
+having it as a git repo makes it a bit more portable and skips a few steps in my process for creating and maintaining a CakePHP project.
+
+
+TODO
+===========
+1. add script to change certain config settings
+1. add auto environment switching solution for config files ( still looking for a good one )
