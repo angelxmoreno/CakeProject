@@ -16,3 +16,6 @@
 [submodule "Plugin/Migrations"]
 	path = Plugin/Migrations
 	url = git://github.com/CakeDC/migrations.git
+[submodule "Plugin/Bakeplus"]
+	path = Plugin/Bakeplus
+	url = https://github.com/angelxmoreno/CakePHP-Bakeplus.git
