@@ -49,6 +49,11 @@ if (!defined('APP_DIR')) {
 }
 
 /**
+ * include the environment switching class
+ */
+include(ROOT . DS . APP_DIR . DS . 'Lib' . DS . 'EnvSwitcher' . DS . 'EnvSwitcher.php');
+
+/**
  * The absolute path to the "cake" directory, WITHOUT a trailing DS.
  *
  * Un-comment this line to specify a fixed path to CakePHP.
@@ -62,7 +67,8 @@ if (!defined('APP_DIR')) {
  * The following line differs from its sibling
  * /app/webroot/index.php
  */
-define('CAKE_CORE_INCLUDE_PATH', 'C:' . DS . 'Users' . DS . 'amoreno' . DS . 'www');
+//define('CAKE_CORE_INCLUDE_PATH', 'C:' . DS . 'Users' . DS . 'amoreno' . DS . 'www');
+EnvSwitcher::includeFile('cake_include.php');
 
 /**
  * Editing below this line should NOT be necessary.

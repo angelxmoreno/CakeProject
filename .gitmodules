@@ -19,3 +19,6 @@
 [submodule "Plugin/Bakeplus"]
 	path = Plugin/Bakeplus
 	url = https://github.com/angelxmoreno/CakePHP-Bakeplus.git
+[submodule "Lib/EnvSwitcher"]
+	path = Lib/EnvSwitcher
+	url = git://github.com/angelxmoreno/CakePHP-Environment-Switcher.git
