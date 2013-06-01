@@ -16,4 +16,4 @@ having it as a git repo makes it a bit more portable and skips a few steps in my
 TODO
 ===========
 1. add script to change certain config settings
-1. add auto environment switching solution for config files ( still looking for a good one )
+1. ~~add auto environment switching solution for config files ( still looking for a good one )~~ Made my own https://github.com/angelxmoreno/CakePHP-Environment-Switcher
