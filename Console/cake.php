@@ -18,15 +18,20 @@
  * @since         CakePHP(tm) v 2.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+/** CLI fix for EnvSwitcher * */
+$root = dirname(dirname(dirname(__FILE__)));
+$APP_DIR = basename(dirname(dirname(__FILE__)));
+putenv("APP_ENV=development");
+include($root . DIRECTORY_SEPARATOR . $APP_DIR . DIRECTORY_SEPARATOR . 'Lib' . DIRECTORY_SEPARATOR . 'EnvSwitcher' . DIRECTORY_SEPARATOR . 'EnvSwitcher.php');
+EnvSwitcher::includeFile('cake_include.php');
+/** * */
 $ds = DIRECTORY_SEPARATOR;
 $dispatcher = 'Cake' . $ds . 'Console' . $ds . 'ShellDispatcher.php';
 
 if (function_exists('ini_set')) {
-	$root = dirname(dirname(dirname(__FILE__)));
-
 	// the following line differs from its sibling
 	// /app/Console/cake.php
-	ini_set('include_path', $root . PATH_SEPARATOR . 'C:' . $ds . 'Users' . $ds . 'amoreno' . $ds . 'www' . PATH_SEPARATOR . ini_get('include_path'));
+	ini_set('include_path', $root . PATH_SEPARATOR . CAKE_CORE_INCLUDE_PATH . PATH_SEPARATOR . ini_get('include_path'));
 }
 
 if (!include ($dispatcher)) {
