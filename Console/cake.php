@@ -20,13 +20,16 @@
  */
 /** CLI fix for EnvSwitcher * */
 $root = dirname(dirname(dirname(__FILE__)));
-$APP_DIR = basename(dirname(dirname(__FILE__)));
-putenv("APP_ENV=development");
-include($root . DIRECTORY_SEPARATOR . $APP_DIR . DIRECTORY_SEPARATOR . 'Lib' . DIRECTORY_SEPARATOR . 'EnvSwitcher' . DIRECTORY_SEPARATOR . 'EnvSwitcher.php');
+$app_dir = basename(dirname(dirname(__FILE__)));
+define('DS', DIRECTORY_SEPARATOR);
+include($root . DS . $app_dir . DS . 'Lib' . DS . 'EnvSwitcher' . DS . 'EnvSwitcher.php');
+EnvSwitcher::init($root . DS . $app_dir . DS . 'Config' . DS . 'envs' . DS);
 EnvSwitcher::includeFile('cake_include.php');
+define('CAKEPHP_SHELL', true);
+define('CORE_PATH', CAKE_CORE_INCLUDE_PATH . DS);
+
 /** * */
-$ds = DIRECTORY_SEPARATOR;
-$dispatcher = 'Cake' . $ds . 'Console' . $ds . 'ShellDispatcher.php';
+$dispatcher = CORE_PATH . 'Cake' . DS . 'Console' . DS . 'ShellDispatcher.php';
 
 if (function_exists('ini_set')) {
 	// the following line differs from its sibling
@@ -37,6 +40,6 @@ if (function_exists('ini_set')) {
 if (!include ($dispatcher)) {
 	trigger_error('Could not locate CakePHP core files.', E_USER_ERROR);
 }
-unset($paths, $path, $dispatcher, $root, $ds);
+unset($paths, $path, $dispatcher, $root, $ds, $app_dir);
 
 return ShellDispatcher::run($argv);
