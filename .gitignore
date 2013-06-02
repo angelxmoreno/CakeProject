@@ -60,3 +60,10 @@ tmp/tests/*
 [Cc]onfig/envs/*
 ![Cc]onfig/envs/_default
 !empty
+
+# ignore bootstrap source and constructed files
+webroot/css/bootstrap*
+webroot/css/less
+webroot/js/bootstrap*
+webroot/js/lib
+webroot/img/glyphicons-halflings*
