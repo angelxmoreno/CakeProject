@@ -107,5 +107,9 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
-
-//CakePlugin::load('Bakeplus', array('bootstrap' => false, 'routes' => false));
+CakePlugin::load('DebugKit', array('bootstrap' => false, 'routes' => false));
+CakePlugin::load('Migrations', array('bootstrap' => false, 'routes' => false));
+CakePlugin::load('Users', array('routes' => true, 'bootstrap' => false));
+CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
+CakePlugin::load('TwitterBootstrap');
+Configure::write('TwitterBootstrap.AppName', 'NewCakeApp');
