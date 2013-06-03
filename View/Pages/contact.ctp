@@ -2,7 +2,7 @@
 $this->Html->addCrumb('Company');
 $this->Html->addCrumb('Contact Us');
 ?>
-<h1>Contact Us</h1>
+<h1><?= __('Contact Us') ?></h1>
 <div class="row">
 
     <form class="well span8">
