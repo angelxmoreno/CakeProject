@@ -109,7 +109,16 @@ CakeLog::config('error', array(
 ));
 CakePlugin::load('DebugKit', array('bootstrap' => false, 'routes' => false));
 CakePlugin::load('Migrations', array('bootstrap' => false, 'routes' => false));
-CakePlugin::load('Users', array('routes' => true, 'bootstrap' => false));
+
+CakePlugin::load('Utils');
+CakePlugin::load('Search');
+CakePlugin::load('Users', array('routes' => false, 'bootstrap' => false));
+Configure::write('App.defaultEmail', 'noreply@domain.com');
+Configure::write('Users.allowRegistration', true);
+Configure::write('Users.emailConfig', 'default');
+Configure::write('Users.roles', array('admin' => 'Admin', 'manager' => 'Manager', 'registered' => 'Registered'));
+Configure::write('Users.defaultRole', 'registered');
+
 CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
 CakePlugin::load('TwitterBootstrap');
 Configure::write('TwitterBootstrap.AppName', 'NewCakeApp');

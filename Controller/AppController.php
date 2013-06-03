@@ -34,11 +34,102 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+	public $navLinks = array(
+	    'Home' => array(
+		'url' => '/'
+	    ),
+	    'About' => array(
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'pages', 'action' => 'display', 'about'),
+	    ),
+	    'Contact' => array(
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'pages', 'action' => 'contact'),
+	    ),
+	    'Dashboard' => array(
+		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'dashboard'),
+		'auth' => true,
+	    ),
+	    'Log Out' => array(
+		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'logout'),
+		'auth' => true,
+	    ),
+	    'Log In' => array(
+		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login'),
+		'auth' => false,
+	    ),
+	    'Register' => array(
+		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'add'),
+		'auth' => false,
+	    )
+	);
+
+	/**
+	 * Helpers
+	 *
+	 * @var array
+	 */
 	public $helpers = array(
 	    'Session',
 	    'Html' => array('className' => 'TwitterBootstrap.BootstrapHtml'),
 	    'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'),
 	    'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'),
 	);
+
+	/**
+	 * Components
+	 *
+	 * @var array
+	 */
+	public $components = array(
+	    'Auth',
+	    'Session',
+	    'Cookie',
+	    'Security',
+	    'DebugKit.Toolbar',
+	    'Users.RememberMe',
+	);
+
+	/**
+	 * beforeFilter callback
+	 *
+	 * @return void
+	 */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->_buildAuth();
+		$this->_restoreLoginFromCookie();
+		$this->set('navLinks', $this->navLinks);
+	}
+
+	/**
+	 * Setup Authentication Component
+	 *
+	 * @return void
+	 */
+	protected function _buildAuth() {
+		$this->Auth->allow('display');
+		$this->Auth->authenticate = array(
+		    'Form' => array(
+			'fields' => array(
+			    'username' => 'email',
+			    'password' => 'password'),
+			'userModel' => 'Users.User',
+			'scope' => array(
+			    'User.active' => 1,
+			    'User.email_verified' => 1)));
+
+		$this->Auth->loginRedirect = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'dashboard');
+		$this->Auth->logoutRedirect = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login');
+		$this->Auth->loginAction = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login');
+	}
+
+	protected function _restoreLoginFromCookie() {
+		$this->Cookie->name = 'Users';
+		$cookie = $this->Cookie->read('rememberMe');
+		if (!empty($cookie)) {
+			$this->request->data['User'][$this->Auth->fields['username']] = $cookie[$this->Auth->fields['username']];
+			$this->request->data['User'][$this->Auth->fields['password']] = $cookie[$this->Auth->fields['password']];
+			$this->Auth->login();
+		}
+	}
 
 }
