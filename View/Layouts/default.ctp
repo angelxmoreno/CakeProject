@@ -54,7 +54,7 @@
 							<? foreach ($navLinks as $name => $link) : ?>
 								<? if (!isset($link['auth']) || ((bool) $link['auth'] == (bool) AuthComponent::user())) : ?>
 							<li<?= ($this->here == $this->Html->url($link['url'])) ? ' class="active"' : '' ?>>
-										<?= $this->Html->Link($name, $link['url']) ?>
+										<?= $this->Html->Link(__($name), $link['url']) ?>
 							</li>
 								<? endif; ?>
 								<? endforeach; ?>
