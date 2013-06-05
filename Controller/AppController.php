@@ -45,19 +45,19 @@ class AppController extends Controller {
 		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'pages', 'action' => 'contact'),
 	    ),
 	    'Dashboard' => array(
-		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'dashboard'),
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'dashboard'),
 		'auth' => true,
 	    ),
 	    'Log Out' => array(
-		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'logout'),
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'logout'),
 		'auth' => true,
 	    ),
 	    'Log In' => array(
-		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login'),
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'login'),
 		'auth' => false,
 	    ),
 	    'Register' => array(
-		'url' => array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'add'),
+		'url' => array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'add'),
 		'auth' => false,
 	    )
 	);
@@ -112,14 +112,14 @@ class AppController extends Controller {
 			'fields' => array(
 			    'username' => 'email',
 			    'password' => 'password'),
-			'userModel' => 'Users.User',
+			'userModel' => 'AppUser',
 			'scope' => array(
-			    'User.active' => 1,
-			    'User.email_verified' => 1)));
+			    'AppUser.active' => 1,
+			    'AppUser.email_verified' => 1)));
 
-		$this->Auth->loginRedirect = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'dashboard');
-		$this->Auth->logoutRedirect = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login');
-		$this->Auth->loginAction = array('admin' => false, 'plugin' => 'users', 'controller' => 'users', 'action' => 'login');
+		$this->Auth->loginRedirect = array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'dashboard');
+		$this->Auth->logoutRedirect = array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'login');
+		$this->Auth->loginAction = array('admin' => false, 'plugin' => null, 'controller' => 'app_users', 'action' => 'login');
 	}
 
 	protected function _restoreLoginFromCookie() {
