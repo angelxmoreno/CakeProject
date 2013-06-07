@@ -25,3 +25,6 @@
 [submodule "Plugin/Utils"]
 	path = Plugin/Utils
 	url = https://github.com/CakeDC/utils.git
+[submodule "Plugin/I18n"]
+	path = Plugin/I18n
+	url = https://github.com/angelxmoreno/i18n.git
