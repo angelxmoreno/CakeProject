@@ -108,6 +108,7 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 CakePlugin::load('DebugKit', array('bootstrap' => false, 'routes' => false));
+CakePlugin::load('Crud');
 CakePlugin::load('Migrations', array('bootstrap' => false, 'routes' => false));
 
 CakePlugin::load('Utils');
