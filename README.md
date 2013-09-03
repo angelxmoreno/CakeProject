@@ -22,3 +22,5 @@ TODO
 4. explore adding to composer
 5. setup compoer to use plugins
 6. add vagrant file
+7. add various session mngt plugins
+8. add various caching mngt plugins
