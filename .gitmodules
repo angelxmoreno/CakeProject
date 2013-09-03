@@ -28,3 +28,6 @@
 [submodule "Plugin/I18n"]
 	path = Plugin/I18n
 	url = https://github.com/angelxmoreno/i18n.git
+[submodule "Plugin/Crud"]
+	path = Plugin/Crud
+	url = git://github.com/FriendsOfCake/crud.git
