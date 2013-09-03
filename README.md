@@ -17,10 +17,10 @@ TODO
 ===========
 1. add script to change certain config settings
 1. ~~add auto environment switching solution for config files ( still looking for a good one )~~ Made my own https://github.com/angelxmoreno/CakePHP-Environment-Switcher
-2. Integrate with FOC Crud plugin
+2. ~~Integrate with FOC Crud plugin
 3. add console tasks to change salt and sipher seed
 4. explore adding to composer
-5. setup compoer to use plugins
+5. setup composer to use plugins
 6. add vagrant file
 7. add various session mngt plugins
 8. add various caching mngt plugins
